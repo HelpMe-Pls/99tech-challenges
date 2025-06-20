@@ -12,7 +12,7 @@ var sum_to_n_a = function (n: number) {
 
 // Suboptimal iterative version using built-in methods
 // O(n) time & space
-var sum_to_n_b = function (n: number): number {
+var sum_to_n_b = function (n: number) {
   const one_to_n = Array.from({ length: n }, (_, index) => index + 1);
 
   // Use reduce to sum the array elements
@@ -38,9 +38,13 @@ var sum_to_n_c = function (n: number) {
 console.log(sum_to_n_a(6));
 console.log(sum_to_n_b(9));
 console.log(sum_to_n_c(69));
+//==================================================================================
 
-// There's an optimal version using mathmetical formula
+// NOTE: There's an optimal version using mathmetical formula
+// An LLM showed me this solution, so it's not original
+// therefore I'm just leaving it as comment
+//-----------------------------------------
 // O(1) time & space
-// var sum_to_n_optimal = function (n: number): number {
+// var sum_to_n_optimal = function (n: number) {
 //   return (n * (n + 1)) / 2;
 // };
