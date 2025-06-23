@@ -61,7 +61,7 @@ const WalletPage: React.FC<Props> = (props: Props) => {
         return false;
       })
       .sort((lhs: WalletBalance, rhs: WalletBalance) => {
-        // NOTE: Should've included the `blockchain` prop in `WalletBalance`
+        // NOTE: Should've included the `blockchain` prop in `WalletBalance` for type safety
         const leftPriority = getPriority(lhs.blockchain);
         const rightPriority = getPriority(rhs.blockchain);
         if (leftPriority > rightPriority) {

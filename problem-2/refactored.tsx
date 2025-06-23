@@ -22,7 +22,7 @@
 interface WalletBalance {
   currency: string;
   amount: number;
-  blockchain?: string; // Added blockchain property according to the type's usage
+  blockchain?: string; // Added `blockchain` property according to the type's usage
 }
 
 interface Props extends BoxProps {}
@@ -51,7 +51,7 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 
   // INFO: Combined all logic into a single, performant `useMemo`
   const walletRows = useMemo(() => {
-    // INFO: Filter balances with clean logic.
+    // INFO: Filter `balances` with clean logic.
     const filteredBalances = balances.filter((balance) => {
       const priority = getPriority(balance.blockchain);
       // NOTE: I'm INTENTIONALLY keeping `balance.amount <= 0`, as stated in `original.tsx`
@@ -67,7 +67,7 @@ const WalletPage: React.FC<Props> = (props: Props) => {
     });
 
     // INFO: No more unnecessary `.map` just to add a `formatted` prop
-    // We're now mapping sorted balances directly to JSX rows in a single pass.
+    // We're now mapping sorted `balances` directly to JSX rows in a single pass.
     return filteredBalances.map((balance) => {
       const usdValue = prices[balance.currency] * balance.amount;
       return (
@@ -81,7 +81,7 @@ const WalletPage: React.FC<Props> = (props: Props) => {
         />
       );
     });
-  }, [balances, prices]); // INFO: The dependencies are now correct because we use both
+  }, [balances, prices]); // INFO: The dependencies are now correct because we're using both
 
   return <div {...rest}>{rows}</div>;
 };
