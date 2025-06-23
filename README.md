@@ -13,6 +13,8 @@ Please read the [original.tsx](./problem-2/original.tsx) first where I explain w
 
 Then, in [refactored.tsx](./problem-2/refactored.tsx) is where you can find my proposal for refactoring it (with the "INFO" comments).
 
+> This one is actually **Problem 3** in your code challenge. So sorry that I messed up the order.
+
 ## Problem 3
 
 Here are the 3 main files of the solution. Have a look at the comments to see what's going on:
@@ -36,3 +38,5 @@ In case you want to run the dev server (which I don't think that you would, as y
 2. [Install Bun](https://bun.sh/docs/installation) - as mentioned in Problem 1 above
 3. `bun i`
 4. `bunx react-router dev`
+
+> This one is actually **Problem 2** in your code challenge. Again, sorry 😝
