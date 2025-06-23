@@ -79,7 +79,7 @@ export function TokenCombobox({ tokens, value, onChange }: TokenComboboxProps) {
                 value={token.currency} // Value for the command item, used in search
                 onSelect={(currentValue) => {
                   // When an item is selected, call the onChange prop with its currency
-                  onChange(currentValue.toUpperCase()); // Ensure uppercase as currencies usually are
+                  onChange(currentValue);
                   setOpen(false); // Close the popover after selection
                 }}
               >
