@@ -26,6 +26,13 @@ What I've done:
 1. Used Vite (with fullstack [`react-router`](https://reactrouter.com/start/modes) to handle form submission).
 2. Used [`react-hook-form`](https://react-hook-form.com/) for form validation.
 3. Used ShadCN components for UI.
-4. Deployed to [Netlify](https://helpme-pls.github.io/99tech-challenges/) so that you can view my solution _without any pain_.
+4. Deployed to [Netlify](https://problem-3.netlify.app) so that you can view my solution _without any pain_.
 
 Caveat: I haven't implemented the UI for errors.
+
+In case you want to run the dev server (which I don't think that you would, as you'd consider it a _painful thing_ to do):
+
+1. `cd problem-3`
+2. [Install Bun](https://bun.sh/docs/installation) - as mentioned in Problem 1 above
+3. `bun i`
+4. `bunx react-router dev`
