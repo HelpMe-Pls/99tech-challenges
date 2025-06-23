@@ -31,6 +31,7 @@ export interface Token {
   price: number;
 }
 
+// INFO: These `message`s will be rendered by `FormMessage`
 const formSchema = z.object({
   fromAmount: z.coerce
     .number({ invalid_type_error: "Please enter a valid number" })
@@ -74,6 +75,7 @@ export function CurrencySwapForm({ tokens }: CurrencySwapFormProps) {
       const toToken = tokens.find((t) => t.currency === toCurrency);
 
       if (fromToken && toToken && fromToken.price > 0 && toToken.price > 0) {
+        // NOTE: Some made-up formula for the sake of the demo
         const exchangeRate = fromToken.price / toToken.price;
         const calculatedToAmount = fromAmount * exchangeRate;
         setToAmount(calculatedToAmount.toFixed(6));
@@ -97,23 +99,22 @@ export function CurrencySwapForm({ tokens }: CurrencySwapFormProps) {
         data
       );
 
-      // fetcher.submit expects a FormData object or URLSearchParams
-      // Convert validated data to FormData
-      const formData = new FormData();
+      // `fetcher.submit` expects a `FormData object or `URLSearchParams`
+      const formData = new FormData(); // Convert validated `data` to `FormData`
       formData.append("fromAmount", String(data.fromAmount));
       formData.append("fromCurrency", data.fromCurrency);
       formData.append("toCurrency", data.toCurrency);
 
-      // Submits to the current route's action (if method is POST)
+      // Submits to the current route's `action`
       fetcher.submit(formData, { method: "POST" });
     },
-    [fetcher] // fetcher is a dependency
+    [fetcher]
   );
 
   const isSubmitting = fetcher.state === "submitting";
 
   useEffect(() => {
-    // Check if fetcher has completed an operation and `fetcher.data` is available
+    // Check if `fetcher` has completed an operation and `fetcher.data` is available
     if (fetcher.state === "idle" && fetcher.data) {
       const { success, message } = fetcher.data;
 
@@ -202,8 +203,8 @@ export function CurrencySwapForm({ tokens }: CurrencySwapFormProps) {
               </div>
 
               {/*NOTE: 
-                This uses plain HTML label and Input from ui/input directly,
-                as 'toAmount' is a calculated, read-only field not managed by react-hook-form.
+                This uses plain HTML `label` and `Input` directly,
+                as `toAmount` is a calculated, read-only field not managed `by react-hook-form`.
               */}
               <div>
                 <label
@@ -234,15 +235,14 @@ export function CurrencySwapForm({ tokens }: CurrencySwapFormProps) {
                     )}
                   />
                 </div>
-                {/* No FormMessage for `toAmount` itself, as it's read-only.
-                    Any validation for `toCurrency` would have its `FormMessage` within its `FormField`. */}
+                {/* No `FormMessage` for `toAmount` itself, as it's read-only. */}
               </div>
 
               <Button
                 type="button" // Prevents immediate native submit
                 disabled={isSubmitting}
-                className="w-full"
                 onClick={form.handleSubmit(onRHFSubmit)} // Triggers RHF validation
+                className="w-full"
               >
                 {isSubmitting ? "Swapping..." : "Confirm Swap"}
               </Button>

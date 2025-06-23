@@ -35,33 +35,31 @@ export function TokenCombobox({ tokens, value, onChange }: TokenComboboxProps) {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      {/* The trigger button for the combobox */}
       <PopoverTrigger asChild>
         <Button
-          variant="outline" // ShadCN button variant
+          variant="outline"
           role="combobox" // ARIA role for accessibility
           aria-expanded={open} // ARIA attribute indicating if the popover is open
-          className="w-[150px] justify-between" // Tailwind classes for styling
+          className="w-[150px] justify-between"
         >
           {/* Display selected token's icon and currency, or a placeholder */}
           {value ? (
             <div className="flex items-center gap-2">
               <img
-                src={getIconUrl(value)} // Source for the token icon
-                alt={value} // Alt text for accessibility
-                className="w-5 h-5" // Size of the icon
+                src={getIconUrl(value)}
+                alt={value}
+                className="w-5 h-5"
                 // Fallback to `DEFAULT_ICON_URL` if the image fails to load
                 onError={(e) => {
                   e.currentTarget.src = DEFAULT_ICON_URL;
                   e.currentTarget.alt = "Missing Icon";
                 }}
               />
-              {value} {/* Display the selected currency text */}
+              {value}
             </div>
           ) : (
             "Pick one..." // Placeholder text when no token is selected
           )}
-          {/* Chevron icon to indicate dropdown */}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -72,18 +70,15 @@ export function TokenCombobox({ tokens, value, onChange }: TokenComboboxProps) {
           <CommandInput placeholder="Search token..." />
           <CommandEmpty>No token found.</CommandEmpty>
           <CommandGroup className="max-h-72 overflow-y-auto">
-            {/* Map over the list of tokens to create searchable command items */}
             {tokens.map((token) => (
               <CommandItem
                 key={token.currency} // Unique key for React list rendering
-                value={token.currency} // Value for the command item, used in search
+                value={token.currency} // used in search
                 onSelect={(currentValue) => {
-                  // When an item is selected, call the onChange prop with its currency
                   onChange(currentValue);
                   setOpen(false); // Close the popover after selection
                 }}
               >
-                {/* Checkmark icon to indicate selected item */}
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
